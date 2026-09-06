@@ -1,0 +1,509 @@
+<title>Fragen für Bastis Rede</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Karla:ital,wght@0,400;0,500;0,700;1,400&display=swap">
+<style>
+:root{
+  --bg:#F6F8F5;
+  --surface:#FFFFFF;
+  --ink:#1B2420;
+  --muted:#5D6862;
+  --line:#DCE2DC;
+  --line-strong:#B5BEB8;
+  --accent:#C62A5A;
+  --accent-ink:#FFFFFF;
+  --accent-soft:#FBE3EB;
+  --accent-deep:#9E1F47;
+  --warn:#8F6210;
+  --warn-soft:#FBF0D3;
+  --lock:#46515C;
+  --lock-soft:#E5E9EE;
+  --radius:10px;
+  --font-display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+  --font-body:"Karla","Helvetica Neue",Arial,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#131816; --surface:#1B211E; --ink:#ECEFEC; --muted:#9BA69F;
+    --line:#2A332E; --line-strong:#3E4943;
+    --accent:#EE5C8C; --accent-ink:#1A0A10; --accent-soft:#3B1E2A; --accent-deep:#F787AC;
+    --warn:#E2B04A; --warn-soft:#3A2F14; --lock:#B6BFC9; --lock-soft:#2A3138;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#131816; --surface:#1B211E; --ink:#ECEFEC; --muted:#9BA69F;
+  --line:#2A332E; --line-strong:#3E4943;
+  --accent:#EE5C8C; --accent-ink:#1A0A10; --accent-soft:#3B1E2A; --accent-deep:#F787AC;
+  --warn:#E2B04A; --warn-soft:#3A2F14; --lock:#B6BFC9; --lock-soft:#2A3138;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased;padding-bottom:110px}
+.wrap{max-width:640px;margin:0 auto;padding:0 20px}
+h1,h2,h3{text-wrap:balance}
+
+/* Hero */
+.hero{padding:44px 0 28px}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700;margin:0 0 14px}
+h1{font-family:var(--font-display);font-size:clamp(36px,9vw,52px);line-height:1;letter-spacing:-.025em;font-weight:800;margin:0 0 18px}
+.lead{font-size:18.5px;margin:0 0 14px}
+.rules{margin:0 0 26px;padding-left:22px;color:var(--muted)}
+.rules li{margin:5px 0}
+.rules strong{color:var(--ink);font-weight:700}
+.picker{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;margin:0 0 16px}
+.picker-label{font-family:var(--font-display);font-weight:700;font-size:21px;margin:0 0 12px}
+.picker-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.person{font:inherit;font-weight:700;font-size:17px;padding:14px;border-radius:10px;border:2px solid var(--line-strong);background:var(--surface);color:var(--ink);cursor:pointer}
+.person[aria-pressed="true"]{border-color:var(--accent);background:var(--accent);color:var(--accent-ink)}
+.overview{color:var(--muted);font-size:15px;margin:0}
+
+/* Parts */
+.part{padding:40px 0 10px}
+.part-label{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700;margin:0 0 6px}
+.part h2{font-family:var(--font-display);font-size:31px;line-height:1.08;letter-spacing:-.02em;font-weight:800;margin:0 0 10px}
+.part-lead{color:var(--muted);margin:0;max-width:62ch}
+
+/* Questions */
+.q{padding:24px 0;border-top:1px solid var(--line)}
+.q-head{display:flex;gap:12px;align-items:baseline}
+.q-num{font-family:var(--font-display);font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums;flex:0 0 28px;font-size:18px}
+.q-title{font-family:var(--font-display);font-weight:700;font-size:21px;line-height:1.25;margin:0}
+.q-hint{margin:8px 0 0 40px;color:var(--muted);font-size:15.5px}
+.q-body{margin:14px 0 0 40px;display:flex;flex-direction:column;gap:10px}
+.q.who{padding:14px 0}
+.q.who .q-title{font-size:18.5px}
+.q.who .q-body{margin-top:10px}
+@media (max-width:520px){.q-hint,.q-body{margin-left:0}}
+
+textarea{font:inherit;color:var(--ink);background:var(--surface);border:1.5px solid var(--line-strong);border-radius:var(--radius);padding:12px 14px;width:100%;min-height:92px;resize:vertical;line-height:1.45;display:block}
+textarea.note{min-height:56px;font-size:15.5px}
+textarea::placeholder,input::placeholder{color:var(--muted);opacity:.8}
+textarea:focus-visible,button:focus-visible,a.btn:focus-visible{outline:3px solid color-mix(in srgb,var(--accent) 45%,transparent);outline-offset:2px}
+textarea:focus-visible{border-color:var(--accent);outline-offset:0}
+
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.fields.single{grid-template-columns:1fr}
+.field{display:flex;flex-direction:column;gap:6px}
+.field-label{font-size:14px;color:var(--muted);font-weight:500}
+.field-input{display:flex;align-items:center;gap:8px;background:var(--surface);border:1.5px solid var(--line-strong);border-radius:var(--radius);padding:0 12px}
+.field-input input{font:inherit;color:var(--ink);border:0;background:transparent;padding:11px 0;width:100%;min-width:0;font-variant-numeric:tabular-nums;font-size:18px;font-weight:700;outline:none}
+.field-input:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 30%,transparent)}
+.unit{color:var(--muted);font-size:14px;white-space:nowrap}
+.sum{margin:0;font-size:14px;color:var(--warn);font-weight:700}
+.sum.ok{color:var(--muted);font-weight:500}
+
+.consent{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font:inherit;font-size:13.5px;font-weight:500;padding:6px 11px;border-radius:999px;border:1px solid var(--line-strong);background:transparent;color:var(--muted);cursor:pointer}
+.chip[aria-checked="true"]{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-deep);font-weight:700}
+.chip[data-consent="ruecksprache"][aria-checked="true"]{background:var(--warn-soft);border-color:var(--warn);color:var(--warn)}
+.chip[data-consent="privat"][aria-checked="true"]{background:var(--lock-soft);border-color:var(--lock);color:var(--lock)}
+
+.who-opts{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.who-opt{font:inherit;font-size:15px;font-weight:700;padding:9px 14px;border-radius:8px;border:1.5px solid var(--line-strong);background:var(--surface);color:var(--ink);cursor:pointer}
+.who-opt[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.lock{margin-left:auto;display:inline-flex;align-items:center;gap:6px;font:inherit;font-size:13px;font-weight:600;padding:8px 10px;border-radius:8px;border:1.5px dashed var(--line-strong);background:transparent;color:var(--muted);cursor:pointer}
+.lock[aria-pressed="true"]{background:var(--lock-soft);border-style:solid;border-color:var(--lock);color:var(--lock)}
+.lock svg{flex:none}
+
+/* Finish */
+.finish{margin-top:44px;padding:26px 22px;background:var(--surface);border:1px solid var(--line);border-radius:16px}
+.finish h2{font-family:var(--font-display);font-size:29px;line-height:1.1;letter-spacing:-.02em;font-weight:800;margin:0 0 10px}
+.finish p{margin:0 0 10px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 12px}
+.btn{font:inherit;font-weight:700;font-size:16px;padding:14px 20px;border-radius:10px;border:1.5px solid var(--line-strong);background:var(--surface);color:var(--ink);cursor:pointer;text-decoration:none;display:inline-block;line-height:1.2;text-align:center}
+.fallback{font-size:14.5px;color:var(--muted)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.primary:hover{background:var(--accent-deep);border-color:var(--accent-deep)}
+.btn.small{padding:10px 16px;font-size:15px}
+.meta{color:var(--muted);font-size:14px;font-variant-numeric:tabular-nums}
+details{margin:14px 0 18px}
+summary{cursor:pointer;font-weight:700;color:var(--accent-deep)}
+#preview{margin-top:10px;min-height:240px;font-size:13.5px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;line-height:1.4}
+.privacy{font-size:14px;color:var(--muted)}
+.linkbtn{font:inherit;font-size:14px;background:none;border:0;padding:0;color:var(--muted);text-decoration:underline;cursor:pointer}
+
+/* Sticky bar */
+.bar{position:fixed;left:0;right:0;bottom:0;background:var(--surface);border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom));z-index:5}
+.bar-inner{max-width:640px;margin:0 auto;display:flex;align-items:center;gap:12px}
+.progress{flex:1;height:6px;background:var(--line);border-radius:3px;overflow:hidden}
+.progress-fill{height:100%;background:var(--accent);width:0%;transition:width .25s}
+.bar-text{font-size:13px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+
+.toast{position:fixed;left:50%;bottom:calc(88px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(8px);background:var(--ink);color:var(--bg);padding:11px 16px;border-radius:10px;font-size:15px;font-weight:500;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;max-width:90vw;text-align:center;z-index:6}
+.toast.show{opacity:1;transform:translateX(-50%)}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+  <header class="hero">
+    <p class="eyebrow">Streng vertraulich · getrennt ausfüllen</p>
+    <h1>Fragen für Bastis Rede</h1>
+    <p class="lead">Hey ihr zwei! Ich halte auf eurer Hochzeit eine Rede und will den Anfang mit ein paar Fun Facts über euch bestreiten. Dafür brauche ich Insiderwissen – und zwar von jedem von euch einzeln.</p>
+    <ul class="rules">
+      <li><strong>Getrennt ausfüllen, nicht absprechen.</strong> Ihr bekommt beide dieselben Fragen. Wenn ihr euch absprecht, wird’s langweilig.</li>
+      <li><strong>Schreibt, wie ihr redet.</strong> Konkrete Erinnerungen schlagen schöne Sätze. Details, die eigentlich zu viel sind, sind genau richtig.</li>
+      <li><strong>Fragen auslassen ist okay.</strong> Bei jeder Antwort könnt ihr markieren, ob sie in die Rede darf. Intime Sachen kommen nur rein, wenn ihr beide einverstanden seid.</li>
+      <li><strong>Am Ende „An Basti schicken“ tippen.</strong> Das öffnet WhatsApp mit unserem Chat und dem fertigen Text – nur noch auf Senden drücken.</li>
+    </ul>
+    <div class="picker">
+      <p class="picker-label">Zuerst: Wer bist du?</p>
+      <div class="picker-btns" role="group" aria-label="Wer bist du?">
+        <button type="button" class="person" data-person="Tim" aria-pressed="false">Ich bin Tim</button>
+        <button type="button" class="person" data-person="Maral" aria-pressed="false">Ich bin Maral</button>
+      </div>
+    </div>
+    <p class="overview">5 Teile · <span id="qcount">43</span> Fragen · ca. 30–45 Minuten. Deine Antworten werden automatisch auf diesem Gerät gespeichert – du kannst jederzeit Pause machen und später im selben Browser weitermachen.</p>
+  </header>
+
+  <main id="form" hidden></main>
+
+  <section class="finish" id="finish" hidden>
+    <h2>Fertig? Dann ab zu Basti.</h2>
+    <p>Tipp auf „An Basti schicken“. WhatsApp öffnet sich mit dem Chat zu Basti und deinem fertigen Text – du musst nur noch auf Senden drücken.</p>
+    <p class="fallback">Falls WhatsApp den Text nicht komplett übernimmt: Er liegt beim Tippen auch in deiner Zwischenablage. Einfach im Chat einfügen. Oder du nutzt „Antworten kopieren“.</p>
+    <div class="actions">
+      <a class="btn primary" id="sendBtn" href="#" target="_blank" rel="noopener">An Basti schicken</a>
+      <button type="button" class="btn" id="copyBtn">Antworten kopieren</button>
+      <button type="button" class="btn" id="shareBtn" hidden>Andere App …</button>
+    </div>
+    <p class="meta" id="metaLine"></p>
+    <details id="previewDetails">
+      <summary>Vorschau des Textes</summary>
+      <textarea id="preview" readonly aria-label="Vorschau aller Antworten"></textarea>
+    </details>
+    <p class="privacy">Deine Antworten liegen nur in diesem Browser. Nichts wird irgendwohin geschickt, bis du den Text selbst abschickst.</p>
+    <button type="button" class="linkbtn" id="resetBtn">Alle meine Antworten löschen</button>
+  </section>
+</div>
+
+<div class="bar" id="bar" hidden>
+  <div class="bar-inner">
+    <div class="progress" aria-hidden="true"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="bar-text" id="barText">0 von 43</span>
+    <a class="btn primary small" id="barSend" href="#" target="_blank" rel="noopener">An Basti schicken</a>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+const PEOPLE=['Tim','Maral'];
+const KEY='redefragen:';
+const BASTI_WA='4917655147963';
+const LOCK_SVG='<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>';
+const CONSENTS=[
+  {v:'rede',label:'Darf in die Rede'},
+  {v:'ruecksprache',label:'Nur nach Rücksprache'},
+  {v:'privat',label:'Bleibt unter uns'}
+];
+const PARTS=[
+  {id:'story',label:'Teil 1',title:'Eure Geschichte',
+   lead:'Konkrete Erinnerungen sind besser als schöne Formulierungen. Wer was gesagt hat, wo ihr wart, was schiefging – genau das brauche ich.',
+   qs:[
+    {id:'meet',title:'Wie habt ihr euch eigentlich kennengelernt?',hint:'Ich kenne die ganze Geschichte tatsächlich nicht. Erzähl sie mir von vorne: Wo, wann, wer hat wen angesprochen, was war der erste Satz – und was ist dabei schiefgelaufen?'},
+    {id:'first',title:'Was hast du beim ersten Kennenlernen wirklich über {P} gedacht?',hint:'Und was davon würdest du heute lachend zurücknehmen?'},
+    {id:'moment',title:'Wann wurde aus „Ich mag dich“ das Gefühl „Mit diesem Menschen will ich mein Leben verbringen“?',hint:'Gab es einen bestimmten Moment – oder kam das ganz leise?'},
+    {id:'laugh',title:'Welche gemeinsame Geschichte bringt dich heute noch zum Lachen?',hint:'Erzähl sie mir so, als wäre ich dabei gewesen: Was ist passiert, wer hat was gesagt oder getan?'},
+    {id:'quirk',title:'Welche kleine Macke von {P} treibt dich manchmal in den Wahnsinn – und würde dir trotzdem fehlen?'},
+    {id:'evening',title:'Wenn ich euch einen Abend lang unbemerkt zu Hause beobachten könnte: Was wäre so typisch für euch?',hint:'Ein Ritual, ein Running Gag oder eine liebevolle Schrulligkeit, die kaum jemand kennt?'},
+    {id:'irresistible',title:'Was findest du an {P} unwiderstehlich?',hint:'Ein Blick, eine Berührung, eine Eigenschaft – oder etwas, das du viel zu selten laut sagst.'},
+    {id:'held',title:'In welchem Moment hast du dich von {P} besonders verstanden, aufgefangen oder geliebt gefühlt?',hint:'Was hat {P} damals getan, das dir so viel bedeutet hat?'},
+    {id:'admire',title:'Wofür bewunderst du {P} – ohne dass {P} das vielleicht überhaupt weiß?',hint:'Worauf bist du stolz, und was hast du durch {P} über dich selbst gelernt?'},
+    {id:'old',title:'Stellt euch vor, ihr seid zusammen alt: Worüber diskutiert ihr vermutlich immer noch – und was macht ihr hoffentlich noch genauso wie heute?'},
+    {id:'promise',title:'Welches persönliche Versprechen möchtest du {P} geben?',hint:'Etwas, das wirklich zu euch passt: groß oder klein, ernst oder mit einem Augenzwinkern.'}
+   ]},
+  {id:'spicy',label:'Teil 2',title:'Körper, Sex und Anziehung',
+   lead:'Ihr habt selbst gesagt, dass euch voreinander nichts peinlich ist. Ich nehme euch beim Wort. Intime Antworten kommen nur in die Rede, wenn ihr beide einverstanden seid – markier sie einfach entsprechend.',
+   qs:[
+    {id:'attract',title:'Was hat dich körperlich als Erstes an {P} angezogen – und wo schaust du heute noch besonders gerne hin?',hint:'War es sofort „Wow!“ oder hat sich die Anziehung erst entwickelt?'},
+    {id:'sexy',title:'Was macht {P}, das du unfassbar sexy findest – obwohl {P} es vermutlich gar nicht merkt?',hint:'Ein bestimmter Blick, eine Bewegung, die Stimme oder etwas ganz Alltägliches?'},
+    {id:'film',title:'Wenn euer Sexleben ein Filmtitel wäre: Wie würde der Film heißen?',hint:'Und falls es dazu eine lustige Geschichte gibt, die ich hören darf: her damit!'},
+    {id:'awkward',title:'Was war euer peinlichster oder lustigster Moment im Bett – oder auf dem Weg dorthin?',hint:'Unterbrechungen, Stürze, Haustiere, Nachbarn, Eltern, Technik: Ich will alles wissen.'}
+   ]},
+  {id:'numbers',label:'Teil 3',title:'Ihr in Zahlen',
+   lead:'Spontan schätzen, nicht nachrechnen und nicht absprechen – dass eure Zahlen nicht zusammenpassen, ist genau der Witz. Bei den Prozentfragen sollen eure beiden Anteile zusammen 100 ergeben.',
+   qs:[
+    {id:'count',type:'num',title:'Wie oft hattet ihr seit eurem Kennenlernen ungefähr Sex miteinander?',fields:[{k:'me',label:'Meine Schätzung',unit:'Mal'}]},
+    {id:'initiative',type:'num',sum:true,title:'Wie verteilt sich bei euch die Initiative zum Sex?',fields:[{k:'me',label:'Ich',unit:'%'},{k:'you',label:'{P}',unit:'%'}]},
+    {id:'hot',type:'num',title:'Wie oft pro Woche denkst du beim Anblick von {P}: „Schon ziemlich heiß!“?',hint:'Und wie oft, glaubst du, geht es {P} mit dir so?',fields:[{k:'me',label:'Ich',unit:'Mal pro Woche'},{k:'you',label:'{P}',unit:'Mal pro Woche'}]},
+    {id:'kiss',type:'num',note:'Falls das erst bei einem späteren Treffen kam: Wann?',title:'Wie viele Minuten hat es bei eurem ersten Treffen gedauert, bis du dachtest: „Dich würde ich gerne küssen“?',hint:'Und wie lange, schätzt du, hat es bei {P} gedauert?',fields:[{k:'me',label:'Bei mir',unit:'Minuten'},{k:'you',label:'Bei {P}',unit:'Minuten'}]},
+    {id:'tidy',type:'num',sum:true,title:'Wer räumt wie viel auf?',fields:[{k:'me',label:'Ich',unit:'%'},{k:'you',label:'{P}',unit:'%'}]},
+    {id:'leave',type:'num',title:'Wenn ihr in zehn Minuten losmüsst: Wie viele Minuten braucht jeder von euch tatsächlich, bis ihr vor der Tür steht?',fields:[{k:'me',label:'Ich',unit:'Minuten'},{k:'you',label:'{P}',unit:'Minuten'}]},
+    {id:'blanket',type:'num',sum:true,title:'Wie viel Prozent der Bettdecke beansprucht jeder von euch nachts?',fields:[{k:'me',label:'Ich',unit:'%'},{k:'you',label:'{P}',unit:'%'}]},
+    {id:'right',type:'num',title:'Bei wie viel Prozent eurer Diskussionen hast du recht?',hint:'Und welche Zahl wird {P} wohl für sich angeben?',fields:[{k:'me',label:'Ich habe recht bei',unit:'%'},{k:'you',label:'{P} sagt vermutlich',unit:'%'}]},
+    {id:'remind',type:'num',title:'Wie oft muss {P} dich im Schnitt an etwas erinnern, bevor du es erledigst?',hint:'Und wie oft musst du {P} erinnern?',fields:[{k:'me',label:'{P} erinnert mich',unit:'Mal'},{k:'you',label:'Ich erinnere {P}',unit:'Mal'}]},
+    {id:'cuddle',type:'num',title:'Wie viele Minuten braucht ihr jeweils nach einem Streit, bis ihr wieder kuscheln wollt?',fields:[{k:'me',label:'Ich',unit:'Minuten'},{k:'you',label:'{P}',unit:'Minuten'}]}
+   ]},
+  {id:'quick',label:'Teil 4',title:'Schnellrunde: Wer von euch …',
+   lead:'Einfach antippen. {P} bekommt exakt dieselbe Liste – mal sehen, wo ihr euch einig seid. Das Schloss neben einer Antwort heißt: bleibt unter uns.',
+   qs:[
+    {id:'w01',type:'who',title:'… war zuerst verknallt?'},
+    {id:'w02',type:'who',title:'… hat den ersten Schritt gemacht?'},
+    {id:'w03',type:'who',title:'… hat zuerst „Ich liebe dich“ gesagt?'},
+    {id:'w04',type:'who',title:'… pupst öfter?'},
+    {id:'w05',type:'who',title:'… schnarcht lauter?'},
+    {id:'w06',type:'who',title:'… ist eifersüchtiger?'},
+    {id:'w07',type:'who',title:'… ist im Bett lauter?'},
+    {id:'w08',type:'who',title:'… hat öfter das Handy in der Hand?'},
+    {id:'w09',type:'who',title:'… kocht besser?'},
+    {id:'w10',type:'who',title:'… gibt mehr Geld für Unsinn aus?'},
+    {id:'w11',type:'who',title:'… ist morgens unausstehlicher?'},
+    {id:'w12',type:'who',title:'… schläft beim Film zuerst ein?'},
+    {id:'w13',type:'who',title:'… kann besser lügen?'},
+    {id:'w14',type:'who',title:'… hat den schlechteren Musikgeschmack?'},
+    {id:'w15',type:'who',title:'… hat zu Hause eigentlich das Sagen?'},
+    {id:'w16',type:'who',title:'… würde in der Zombie-Apokalypse den anderen zurücklassen?'},
+    {id:'quicknote',title:'Zu welcher dieser Antworten gibt es eine Geschichte?',hint:'Optional – aber die besten Fun Facts entstehen genau hier.'}
+   ]},
+  {id:'end',label:'Zum Schluss',title:'Was bleibt unter uns?',lead:'',
+   qs:[
+    {id:'private',noConsent:true,title:'Gibt es Antworten oder Themen, die nur für mich bestimmt sind oder die du auf keinen Fall in der Rede hören willst?',hint:'Markiere die Antworten oben und ergänze hier alles Weitere.'}
+   ]}
+];
+
+const ALL=[];
+PARTS.forEach(p=>p.qs.forEach(q=>{q.part=p;q.n=ALL.length+1;ALL.push(q);}));
+
+let person=null, answers={};
+const $=s=>document.querySelector(s);
+const main=$('#form'), finish=$('#finish'), bar=$('#bar');
+$('#qcount').textContent=ALL.length;
+
+const partner=()=>person===PEOPLE[0]?PEOPLE[1]:PEOPLE[0];
+const t=s=>(s||'').replace(/\{P\}/g,partner());
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const type=q=>q.type||'text';
+const a=id=>answers[id]||(answers[id]={});
+
+function loadPerson(){try{const p=localStorage.getItem(KEY+'person');if(PEOPLE.includes(p))person=p;}catch(e){}}
+function loadAnswers(){answers={};try{const raw=localStorage.getItem(KEY+person);if(raw)answers=JSON.parse(raw)||{};}catch(e){answers={};}}
+let saveT;
+function save(){clearTimeout(saveT);saveT=setTimeout(()=>{try{localStorage.setItem(KEY+person,JSON.stringify(answers));}catch(e){}},250);}
+
+function renderQ(q){
+  const ty=type(q);
+  const hint=q.hint?`<p class="q-hint">${esc(t(q.hint))}</p>`:'';
+  let body='';
+  if(ty==='text'){
+    body=`<textarea data-id="${q.id}" data-k="text" rows="3" placeholder="Deine Antwort …" aria-label="Antwort zu Frage ${q.n}"></textarea>`;
+  }else if(ty==='num'){
+    body=`<div class="fields${q.fields.length===1?' single':''}">`+q.fields.map(f=>
+      `<label class="field"><span class="field-label">${esc(t(f.label))}</span><span class="field-input"><input type="text" inputmode="numeric" data-id="${q.id}" data-k="${f.k}" placeholder="?"><span class="unit">${esc(f.unit)}</span></span></label>`
+    ).join('')+`</div>`
+    +(q.sum?`<p class="sum" data-sum="${q.id}" hidden></p>`:'')
+    +(q.note?`<textarea class="note" data-id="${q.id}" data-k="note" rows="2" placeholder="${esc(q.note)}" aria-label="Ergänzung zu Frage ${q.n}"></textarea>`:'');
+  }else if(ty==='who'){
+    body=`<div class="who-opts" role="group" aria-label="Wer von euch?">`
+      +`<button type="button" class="who-opt" data-id="${q.id}" data-val="me" aria-pressed="false">Ich</button>`
+      +`<button type="button" class="who-opt" data-id="${q.id}" data-val="you" aria-pressed="false">${esc(partner())}</button>`
+      +`<button type="button" class="who-opt" data-id="${q.id}" data-val="both" aria-pressed="false">Beide</button>`
+      +`<button type="button" class="lock" data-id="${q.id}" aria-pressed="false" title="Bleibt unter uns">${LOCK_SVG}<span>unter uns</span></button>`
+      +`</div>`;
+  }
+  const consent=(ty!=='who'&&!q.noConsent)
+    ?`<div class="consent" role="radiogroup" aria-label="Darf das in die Rede?">`+CONSENTS.map(c=>
+        `<button type="button" class="chip" role="radio" data-id="${q.id}" data-consent="${c.v}" aria-checked="${c.v==='rede'}">${c.label}</button>`
+      ).join('')+`</div>`
+    :'';
+  return `<article class="q ${ty}" id="q-${q.id}"><div class="q-head"><span class="q-num">${q.n}</span><h3 class="q-title">${esc(t(q.title))}</h3></div>${hint}<div class="q-body">${body}${consent}</div></article>`;
+}
+function renderPart(p){
+  return `<section class="part-block"><div class="part"><p class="part-label">${esc(p.label)}</p><h2>${esc(t(p.title))}</h2>${p.lead?`<p class="part-lead">${esc(t(p.lead))}</p>`:''}</div>${p.qs.map(renderQ).join('')}</section>`;
+}
+function render(){
+  main.innerHTML=PARTS.map(renderPart).join('');
+  restore();
+  update();
+}
+function grow(el){el.style.height='auto';el.style.height=(el.scrollHeight+2)+'px';}
+function restore(){
+  main.querySelectorAll('textarea,input').forEach(el=>{
+    const v=(answers[el.dataset.id]||{})[el.dataset.k];
+    el.value=v==null?'':v;
+    if(el.tagName==='TEXTAREA'&&el.value)grow(el);
+  });
+  main.querySelectorAll('.chip').forEach(el=>{
+    const c=(answers[el.dataset.id]||{}).consent||'rede';
+    el.setAttribute('aria-checked',String(el.dataset.consent===c));
+  });
+  main.querySelectorAll('.who-opt').forEach(el=>{
+    el.setAttribute('aria-pressed',String((answers[el.dataset.id]||{}).who===el.dataset.val));
+  });
+  main.querySelectorAll('.lock').forEach(el=>{
+    el.setAttribute('aria-pressed',String((answers[el.dataset.id]||{}).consent==='privat'));
+  });
+  ALL.filter(q=>q.sum).forEach(checkSum);
+}
+function checkSum(q){
+  const el=main.querySelector(`[data-sum="${q.id}"]`);if(!el)return;
+  const v=answers[q.id]||{};
+  const nums=q.fields.map(f=>parseFloat(String(v[f.k]||'').replace(',','.')));
+  if(nums.some(isNaN)){el.hidden=true;return;}
+  const s=nums.reduce((x,y)=>x+y,0);
+  el.hidden=false;
+  el.className='sum'+(Math.round(s)===100?' ok':'');
+  el.textContent=Math.round(s)===100?'Zusammen 100 % – passt.':`Zusammen ${Math.round(s)} % – soll 100 ergeben.`;
+}
+function answered(q){
+  const v=answers[q.id];if(!v)return false;
+  const ty=type(q);
+  if(ty==='text')return !!(v.text&&v.text.trim());
+  if(ty==='num')return q.fields.some(f=>v[f.k]&&String(v[f.k]).trim());
+  if(ty==='who')return !!v.who;
+  return false;
+}
+
+main.addEventListener('input',e=>{
+  const el=e.target;if(!el.dataset||!el.dataset.id)return;
+  a(el.dataset.id)[el.dataset.k]=el.value;
+  if(el.tagName==='TEXTAREA')grow(el);
+  const q=ALL.find(x=>x.id===el.dataset.id);
+  if(q&&q.sum)checkSum(q);
+  save();update();
+});
+main.addEventListener('click',e=>{
+  const chip=e.target.closest('.chip');
+  if(chip){
+    a(chip.dataset.id).consent=chip.dataset.consent;
+    chip.parentElement.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-checked',String(c===chip)));
+    save();update();return;
+  }
+  const opt=e.target.closest('.who-opt');
+  if(opt){
+    const cur=a(opt.dataset.id);
+    cur.who=cur.who===opt.dataset.val?'':opt.dataset.val;
+    opt.parentElement.querySelectorAll('.who-opt').forEach(o=>o.setAttribute('aria-pressed',String(o.dataset.val===cur.who)));
+    save();update();return;
+  }
+  const lock=e.target.closest('.lock');
+  if(lock){
+    const cur=a(lock.dataset.id);
+    cur.consent=cur.consent==='privat'?'rede':'privat';
+    lock.setAttribute('aria-pressed',String(cur.consent==='privat'));
+    save();update();
+  }
+});
+
+function marker(c){
+  if(c==='ruecksprache')return '⚠️ Nur nach Rücksprache';
+  if(c==='privat')return '🔒 Bleibt unter uns';
+  return '';
+}
+function buildText(){
+  const L=[];
+  const date=new Date().toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit',year:'numeric'});
+  L.push('🎤 Fragen für Bastis Rede');
+  L.push(`Antworten von ${person} · ${date}`);
+  L.push('');
+  const skipped=[];
+  PARTS.forEach(p=>{
+    if(!p.qs.some(answered)){p.qs.forEach(q=>skipped.push(q.n));return;}
+    L.push(`*${((p.label?p.label+' · ':'')+t(p.title)).toUpperCase()}*`);
+    L.push('');
+    let lastWho=false;
+    p.qs.forEach(q=>{
+      const ty=type(q);
+      if(!answered(q)){skipped.push(q.n);return;}
+      const v=answers[q.id];
+      const m=marker(v.consent);
+      if(ty==='who'){
+        const who=v.who==='me'?`Ich (${person})`:v.who==='you'?partner():'Beide';
+        L.push(`${q.n}. Wer ${t(q.title).replace(/^…\s*/,'')} → ${who}${v.consent==='privat'?' 🔒':''}`);
+        lastWho=true;return;
+      }
+      if(lastWho){L.push('');lastWho=false;}
+      L.push(`*${q.n}. ${t(q.title)}*`);
+      if(ty==='text'){
+        L.push(v.text.trim());
+      }else{
+        L.push(q.fields.map(f=>`${t(f.label)}: ${v[f.k]&&String(v[f.k]).trim()?String(v[f.k]).trim():'–'} ${f.unit}`).join(' · '));
+        if(v.note&&v.note.trim())L.push(v.note.trim());
+      }
+      if(m)L.push(m);
+      L.push('');
+    });
+    if(lastWho)L.push('');
+  });
+  if(skipped.length)L.push(`Übersprungen: ${skipped.join(', ')}`);
+  return L.join('\n').replace(/\n{3,}/g,'\n\n').trim();
+}
+
+function update(){
+  const done=ALL.filter(answered).length;
+  $('#barText').textContent=`${done} von ${ALL.length}`;
+  $('#progressFill').style.width=(100*done/ALL.length)+'%';
+  const text=buildText();
+  const chars=text.length;
+  const limit=65536;
+  $('#metaLine').textContent=`${done} von ${ALL.length} Fragen beantwortet · ${chars.toLocaleString('de-DE')} Zeichen`
+    +(chars>limit?` – zu lang für eine WhatsApp-Nachricht (max. ${limit.toLocaleString('de-DE')}), bitte in zwei Teilen schicken.`:` – passt locker in eine WhatsApp-Nachricht.`);
+  if($('#previewDetails').open)$('#preview').value=text;
+  const href=`https://wa.me/${BASTI_WA}?text=${encodeURIComponent(text)}`;
+  $('#sendBtn').href=href;$('#barSend').href=href;
+}
+$('#previewDetails').addEventListener('toggle',()=>{if($('#previewDetails').open)$('#preview').value=buildText();});
+
+let toastT;
+function toast(msg){const el=$('#toast');el.textContent=msg;el.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>el.classList.remove('show'),3200);}
+
+async function copyAll(){
+  const text=buildText();
+  const ta=$('#preview');ta.value=text;
+  try{
+    await navigator.clipboard.writeText(text);
+    toast('Kopiert! Jetzt bei WhatsApp an Basti einfügen.');
+    return;
+  }catch(e){}
+  $('#previewDetails').open=true;
+  ta.focus();ta.select();ta.setSelectionRange(0,text.length);
+  let ok=false;
+  try{ok=document.execCommand('copy');}catch(e){}
+  toast(ok?'Kopiert! Jetzt bei WhatsApp an Basti einfügen.':'Text ist markiert – lange drücken und „Kopieren“ wählen.');
+}
+$('#copyBtn').addEventListener('click',copyAll);
+function onSend(){
+  const text=buildText();
+  $('#preview').value=text;
+  try{navigator.clipboard.writeText(text).catch(()=>{});}catch(e){}
+  toast('WhatsApp öffnet sich – nur noch auf Senden drücken.');
+}
+$('#sendBtn').addEventListener('click',onSend);
+$('#barSend').addEventListener('click',onSend);
+
+if(navigator.share){
+  const sb=$('#shareBtn');sb.hidden=false;
+  sb.addEventListener('click',async()=>{
+    const text=buildText();
+    try{await navigator.share({title:'Antworten für Bastis Rede',text});}
+    catch(e){if(e&&e.name!=='AbortError')copyAll();}
+  });
+}
+
+$('#resetBtn').addEventListener('click',()=>{
+  if(!confirm(`Wirklich alle Antworten von ${person} auf diesem Gerät löschen?`))return;
+  answers={};
+  try{localStorage.removeItem(KEY+person);}catch(e){}
+  render();toast('Alles gelöscht.');
+});
+
+function choose(p,scroll){
+  person=p;
+  try{localStorage.setItem(KEY+'person',p);}catch(e){}
+  document.querySelectorAll('.person').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.person===p)));
+  loadAnswers();
+  main.hidden=false;finish.hidden=false;bar.hidden=false;
+  render();
+  if(scroll){
+    const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    main.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+  }
+}
+document.querySelectorAll('.person').forEach(b=>b.addEventListener('click',()=>choose(b.dataset.person,true)));
+
+loadPerson();
+if(person)choose(person,false);
+})();
+</script>
